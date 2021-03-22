@@ -1,0 +1,17 @@
+/* landingPage */
+.timePageSpace{
+    margin: 20px;
+}
+
+.slots{
+    margin-right: 5px;
+}
+
+/* formPage */
+.formCard{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 2rem;
+  }
