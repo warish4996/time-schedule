@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import LandingPage from './Pages/landingPage'
 import InfoPage from './Pages/infoPage'
 import Store from './Store/store'
-import 'react-toastify/dist/ReactToastify.css';
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';

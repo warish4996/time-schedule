@@ -8,7 +8,7 @@ const initialState = {
 };
 
 /**
- * Reducer function for admin product actions
+ * Reducer function for time Created or update actions
  * @param  {Object} state inintal state
  * @param  {Object} action dispatched action from redux store update
  */
@@ -25,6 +25,15 @@ export const reducer = (state = initialState, action) => {
         ...state,
         data: [...prevData,payload],
       };
+    case actionTypes.CANCEL:
+      prevData.map((res,i)=>{
+        if(res.time === payload){
+          prevData.splice(i,1)
+        } })
+        return {
+          ...state,
+          data: [...prevData],
+        };
     default:
       return state;
   }

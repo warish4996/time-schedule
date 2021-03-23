@@ -15,3 +15,19 @@ export const saveData = (payload, callBackConfirmation) => {
     }
   };
 };
+
+/**
+ * Action function for canceling data
+ */
+
+ export const cancelData = (payload) => {
+  return async (dispatch) => {
+    if(payload){
+      dispatch({
+        type: actionTypes.CANCEL,
+        payload: payload,
+      })
+    }
+  };
+};
+

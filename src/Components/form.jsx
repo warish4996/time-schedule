@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Form, Button, Col, Card, Row, Spinner, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { saveData } from "../Store/Action/mainAction";
+import { saveData, cancelData } from "../Store/Action/mainAction";
 import {useLocation,useHistory} from "react-router-dom"
 
 function Handleform(){
@@ -15,7 +15,7 @@ function Handleform(){
   const [emailError, setEmailError] = useState(false);
   const [validEmailError, setValidEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
-  const [particularData, setParticularData] = useState({});
+  const [particularData, setParticularData] = useState(null);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -24,11 +24,9 @@ function Handleform(){
 
   useEffect (async()=>{
     let time = location.query && location.query.onTime
-    console.log(data,"-----data")
     selectedTime = await data.filter(res=>res.time == time)
-    console.log(selectedTime,"-----selectedTime")
     if(selectedTime.length > 0){
-    setParticularData([0])
+    setParticularData(selectedTime[0])
     setFirstName(selectedTime[0].firstName)
     setLastName(selectedTime[0].lastName)
     setEmail(selectedTime[0].email)
@@ -94,6 +92,8 @@ function Handleform(){
 
   const cancelForm = () =>{
     history.push("/main-page");
+    if(particularData)
+    dispatch(cancelData(location.query && location.query.onTime))
   }
 
   return (
@@ -155,7 +155,7 @@ function Handleform(){
               )}
             </Form.Group>
 
-            <Button variant="dark" onClick={() => cancelForm()}>
+            <Button className='space' variant="dark" onClick={() => cancelForm()}>
                 Cancel
             </Button>
 
